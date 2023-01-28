@@ -12,6 +12,8 @@ public class VariablesTheme {
     }
 
     static void displayPrimitiveDataTypes() {
+        System.out.println("1. Вывод значений переменных на консоль");
+
         byte ramSizeInGB = 16;
         short cpuCores = 6;
         int cpuSpeedInKHertz = 27_000_000;
@@ -21,7 +23,6 @@ public class VariablesTheme {
         boolean touchScreen = true;
         char noteBookSize = 'M';
 
-        System.out.println("1. Вывод значений переменных на консоль");
         System.out.printf("NoteBook characteristics: { ramSizeInGB: %s, cpuCores: %s, cpuSpeedInKHertz: %s, " +
                 "storageInKByte: %s, " + "displaySize: %s, " + "cpuTurboSpeedInGHertz: %s, touchScreen: %s, " +
                 "noteBookSize: %s} \n\n", ramSizeInGB, cpuCores, cpuSpeedInKHertz, storageInKByte, displaySize,
@@ -29,12 +30,13 @@ public class VariablesTheme {
     }
 
     static void calculateDiscountPrice() {
+        System.out.println("2. Расчет стоимости товара со скидкой");
+
         float penPrice = 100F;
         float bookPrice = 200F;
         float discountPerсent = 11 / 100F;
         float totalSum = (penPrice + bookPrice) * (1 - discountPerсent);
-        float discountPrice = (penPrice + bookPrice) * (discountPerсent);
-        System.out.println("2. Расчет стоимости товара со скидкой");
+        float discountPrice = (penPrice + bookPrice) * discountPerсent;
         System.out.printf("Сумма скидки = %s,\nОбщая стоимость товаров со скидкой = %s\n\n", discountPrice, totalSum);
     }
 
@@ -45,25 +47,25 @@ public class VariablesTheme {
     }
 
     static void displayMinMax() {
+        System.out.println("4. Вывод min и max значений целых числовых типов");
         byte byteNum = 127;
         short shortNum = 32_767;
         int intNum = 2_147_483_647;
         long longNum = 9_223_372_036_854_775_807L;
-        System.out.println("4. Вывод min и max значений целых числовых типов");
         System.out.printf("Byte original value %s, its incremented value %s, its decremented value %s\n",
-                byteNum, ++ byteNum, -- byteNum);
+                byteNum, ++byteNum, --byteNum);
         System.out.printf("Short original value %s, its incremented value %s, its decremented value %s\n",
-                shortNum, ++ shortNum, -- shortNum);
+                shortNum, ++shortNum, --shortNum);
         System.out.printf("Int original value %s, its incremented value %s, its decremented value %s\n",
-                intNum, ++ intNum, -- intNum);
+                intNum, ++intNum, --intNum);
         System.out.printf("Long original value %s, its incremented value %s, its decremented value %s\n\n",
-                longNum, ++ longNum, -- longNum);
+                longNum, ++longNum, --longNum);
     }
 
     static void swapVariables() {
+        System.out.println("5. Перестановка значений переменных");
         int num1 = 2;
         int num2 = 5;
-        System.out.println("5. Перестановка значений переменных");
         System.out.println("C помощью третьей переменной");
         System.out.printf("Original values: %d, %d\n", num1, num2);
         int tmp = num1;
@@ -116,27 +118,24 @@ public class VariablesTheme {
     }
 
     static void displayRanksOfNumber() {
+        System.out.println("8. Вывод количества сотен, десятков и единиц числа");
         int num = 123;
-        int remainder = num;
 
         int ones = num % 10;
-        remainder = remainder / 10;
-        int tens = remainder % 10;
-        remainder = remainder / 10;
-        int hundreds = remainder % 10;
+        int tens = num / 10 % 10;
+        int hundreds = num / 100  % 10;
 
-        System.out.println("8. Вывод количества сотен, десятков и единиц числа");
         System.out.printf("Число %d содержит:\n" + "%d сотен\n" + "%d десятков\n" + "%d единиц\n" + "Сумма его цифр " +
                 "=" + " %d\n" + "Произведение = %d\n\n", num, hundreds, tens, ones, hundreds + tens + ones,
                 hundreds * ones * tens);
     }
 
     static void displayTime() {
-        int num = 86399;
-        short hours = (short) (num / 3600);
-        short minutes = (short) ((num / 60) % 60);
-        short seconds = (short) (num % 60);
         System.out.println("9. Вывод времени");
+        int totalSeconds = 86399;
+        short hours = (short) (totalSeconds / 3600);
+        short minutes = (short) ((totalSeconds / 60) % 60);
+        short seconds = (short) (totalSeconds % 60);
         System.out.printf("%s:%s:%s\n\n", hours, minutes, seconds);
     }
 }
