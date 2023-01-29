@@ -221,14 +221,14 @@ public class IfElseStatementTheme {
             fromATM10 = inATM10;
         }
 
-        System.out.printf("Original sum = %d and recalculated sum = %d\n", withdrawalAmount,
-                fromATM100 * 100 + fromATM10 * 10 + fromATM1);
-
         if (fromATM1 > inATM1) {
             System.out.println("not enough banknotes in ATM\n\n");
         } else {
             System.out.printf("You will get hundredBanknotes = %d tenBanknotes = %d oneBanknotes = %d\n\n",
                     fromATM100, fromATM10, fromATM1);
         }
+
+        System.out.printf("Original sum = %d and recalculated sum = %d\n", withdrawalAmount,
+                fromATM100 * 100 + fromATM10 * 10 + fromATM1);
     }
 }
