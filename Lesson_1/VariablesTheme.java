@@ -24,9 +24,9 @@ public class VariablesTheme {
         char noteBookSize = 'M';
 
         System.out.printf("NoteBook characteristics: { ramSizeInGB: %s, cpuCores: %s, cpuSpeedInKHertz: %s, " +
-                "storageInKByte: %s, " + "displaySize: %s, " + "cpuTurboSpeedInGHertz: %s, touchScreen: %s, " +
-                "noteBookSize: %s} \n\n", ramSizeInGB, cpuCores, cpuSpeedInKHertz, storageInKByte, displaySize,
-                cpuTurboSpeedInGHertz, touchScreen, noteBookSize);
+                "storageInKByte: %s, " + "displaySize: %s, " + "cpuTurboSpeedInGHertz: %s, touchScreen: " +
+                "%s, noteBookSize: %s} \n\n", ramSizeInGB, cpuCores, cpuSpeedInKHertz, storageInKByte,
+                displaySize, cpuTurboSpeedInGHertz, touchScreen, noteBookSize);
     }
 
     static void calculateDiscountPrice() {
@@ -37,7 +37,8 @@ public class VariablesTheme {
         float discountPerсent = 11 / 100F;
         float totalSum = (penPrice + bookPrice) * (1 - discountPerсent);
         float discountPrice = (penPrice + bookPrice) * discountPerсent;
-        System.out.printf("Сумма скидки = %s,\nОбщая стоимость товаров со скидкой = %s\n\n", discountPrice, totalSum);
+        System.out.printf("Сумма скидки = %s,\nОбщая стоимость товаров со скидкой = %s\n\n", discountPrice,
+                totalSum);
     }
 
     static void displayJava() {
@@ -123,10 +124,10 @@ public class VariablesTheme {
 
         int ones = num % 10;
         int tens = num / 10 % 10;
-        int hundreds = num / 100  % 10;
+        int hundreds = num / 100;
 
-        System.out.printf("Число %d содержит:\n" + "%d сотен\n" + "%d десятков\n" + "%d единиц\n" + "Сумма его цифр " +
-                "=" + " %d\n" + "Произведение = %d\n\n", num, hundreds, tens, ones, hundreds + tens + ones,
+        System.out.printf("Число %d содержит:\n" + "%d сотен\n" + "%d десятков\n" + "%d единиц\n" + "Сумма его " +
+                "цифр =" + " %d\n" + "Произведение = %d\n\n", num, hundreds, tens, ones, hundreds + tens + ones,
                 hundreds * ones * tens);
     }
 

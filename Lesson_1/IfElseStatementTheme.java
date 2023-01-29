@@ -8,7 +8,7 @@ public class IfElseStatementTheme {
         calculateAnnualTotalOfDeposit();
         showMarksOnSubjects();
         showAnnualIncome();
-        showNumberOfBanknotes();
+        calculateNumberOfBanknotes();
     }
 
     static void showPersonInfo() {
@@ -86,7 +86,7 @@ public class IfElseStatementTheme {
 
         int num1 = 879;
         int num2 = 879;
-        boolean notFoundIdenticalFigures = true;
+        boolean isDigitsEqual = false;
         int digitOfNum1 = num1 / 100 % 10;
         int digitOfNum2 = num2 / 100 % 10;
 
@@ -94,24 +94,24 @@ public class IfElseStatementTheme {
 
         if ((digitOfNum1 == digitOfNum2)) {
             System.out.printf("matching signs of hundreds : %d, %d", digitOfNum1, digitOfNum2);
-            notFoundIdenticalFigures = false;
+            isDigitsEqual = true;
         }
 
         digitOfNum1 = num1 / 10 % 10;
         digitOfNum2 = num2 / 10 % 10;
         if ((digitOfNum1 == digitOfNum2)) {
             System.out.printf("matching signs of tens : %d, %d", digitOfNum1, digitOfNum2);
-            notFoundIdenticalFigures = false;
+            isDigitsEqual = true;
         }
 
         digitOfNum1 = num1 % 10;
         digitOfNum2 = num2 % 10;
         if ((digitOfNum1 == digitOfNum2)) {
             System.out.printf("matching signs of ones : %d, %d", digitOfNum1, digitOfNum2);
-            notFoundIdenticalFigures = false;
+            isDigitsEqual = true;
         }
 
-        if (notFoundIdenticalFigures) {
+        if (!isDigitsEqual) {
             System.out.printf("No matching digits found");
         }
     }
@@ -123,11 +123,11 @@ public class IfElseStatementTheme {
 
         System.out.println("symbol =" + symbol);
 
-        if (symbol > 'a' && symbol < 'z') {
+        if (symbol >= 'a' && symbol <= 'z') {
             System.out.println("lower case letter\n");
-        } else if (symbol > 'A' && symbol < 'Z') {
+        } else if (symbol >= 'A' && symbol <= 'Z') {
             System.out.println("upper case letter\n");
-        } else if (symbol > '0' && symbol < '9') {
+        } else if (symbol >= '0' && symbol <= '9') {
             System.out.println("number");
         } else {
             System.out.println("not a letter and not a number");
@@ -138,35 +138,37 @@ public class IfElseStatementTheme {
         System.out.println("6. Подсчет суммы вклада и начисленных банком %");
 
         float deposit = 300_000;
-        float accruedIncome = (float) (deposit * 0.1);
+        float depositRate = 0.1F;
+        float accruedIncome;
 
         if (deposit < 100_000) {
-            accruedIncome = (float) (deposit * 0.05);
+            depositRate = 0.05F;
         } else if (deposit < 300_000) {
-            accruedIncome = (float) (deposit * 0.07);
+            depositRate = 0.07F;
         }
 
-        System.out.printf("For deposit %.2f accrued income is %.2f and at the end of the year the total sum of the " +
-                "deposit is %.2f\n\n",
+        accruedIncome = deposit * depositRate;
+        System.out.printf("For deposit %.2f accrued income is %.2f and at the end of the year the total sum of " +
+                "the deposit is %.2f\n\n",
                 deposit, accruedIncome, deposit + accruedIncome);
     }
 
     static void showMarksOnSubjects() {
         System.out.println("7. Определение оценки по предметам");
 
-        int historyMarkInPercent = 59;
-        int programmingMarkInPercent = 91;
-        int historyMark = determineMark(historyMarkInPercent);
-        int programmingMark = determineMark(programmingMarkInPercent);
+        int historyPercent = 59;
+        int programPercent = 91;
+        int historyMark = determineMark(historyPercent);
+        int programMark = determineMark(programPercent);
 
-        System.out.printf("History mark %d and in percent %d\n", historyMark, historyMarkInPercent);
+        System.out.printf("History mark %d and in percent %d\n", historyMark, historyPercent);
 
-        System.out.printf("Programming mark %d and in percent %d\n", programmingMark,
-                programmingMarkInPercent);
+        System.out.printf("Programming mark %d and in percent %d\n", programMark,
+                programPercent);
 
         System.out.printf("Average mark %.1f and in percent %.1f\n\n",
-                (float) ((historyMark + programmingMark) / 2),
-                (float) ((historyMarkInPercent + programmingMarkInPercent) / 2));
+                (float) ((historyMark + programMark) / 2),
+                (float) ((historyPercent + programPercent) / 2));
     }
 
     static short determineMark(int markInPercent) {
@@ -184,50 +186,49 @@ public class IfElseStatementTheme {
     static void showAnnualIncome() {
         System.out.println("8. Расчет прибыли за год");
         int monthTurnover = 13_000;
-        int monthExpenses = 5_000 + 9_000;
+        int rentCost = 5_000;
+        int productionCost = 9_000;
 
-        int annualIncome = (monthTurnover - monthExpenses) * 12;
+        int annualIncome = (monthTurnover - rentCost - productionCost) * 12;
 
         if (annualIncome > 0) {
             System.out.println("Annual income : +" + annualIncome);
         } else if (annualIncome == 0) {
-            System.out.println("Annual income : zero");
-        } else {
             System.out.println("Annual income : " + annualIncome);
         }
     }
 
-    static void showNumberOfBanknotes() {
+    static void calculateNumberOfBanknotes() {
         System.out.println("\n9. Подсчет количества банкнот");
 
-        int mountToBeWithdrawn = 567;
+        int withdrawalAmount = 567;
 
-        int hundredBanknotesInAtm = 10;
-        int tenBanknotesInAtm = 5;
-        int oneBanknotesInAtm = 50;
+        int inATM100 = 10;
+        int inATM10 = 5;
+        int inATM1 = 50;
 
-        int hundredBanknotes = mountToBeWithdrawn / 100 % 10;
-        int tenBanknotes = mountToBeWithdrawn / 10 % 10;
-        int oneBanknotes = mountToBeWithdrawn / 1 % 10;
+        int fromATM100 = withdrawalAmount / 100 % 10;
+        int fromATM10 = withdrawalAmount / 10 % 10;
+        int fromATM1 = withdrawalAmount % 10;
 
-        if (hundredBanknotes > hundredBanknotesInAtm) {
-            tenBanknotes += (hundredBanknotes - hundredBanknotesInAtm) * 10;
-            hundredBanknotes = hundredBanknotesInAtm;
+        if (fromATM100 > inATM100) {
+            fromATM10 += (fromATM100 - inATM100) * 10;
+            fromATM100 = inATM100;
         }
 
-        if (tenBanknotes > tenBanknotesInAtm) {
-            oneBanknotes += (tenBanknotes - tenBanknotesInAtm) * 10;
-            tenBanknotes = tenBanknotesInAtm;
+        if (fromATM10 > inATM10) {
+            fromATM1 += (fromATM10 - inATM10) * 10;
+            fromATM10 = inATM10;
         }
 
-        System.out.printf("Original sum = %d and recalculated sum = %d\n", mountToBeWithdrawn,
-                hundredBanknotes * 100 + tenBanknotes * 10 + oneBanknotes);
+        System.out.printf("Original sum = %d and recalculated sum = %d\n", withdrawalAmount,
+                fromATM100 * 100 + fromATM10 * 10 + fromATM1);
 
-        if (oneBanknotes > oneBanknotesInAtm) {
+        if (fromATM1 > inATM1) {
             System.out.println("not enough banknotes in ATM\n\n");
         } else {
             System.out.printf("You will get hundredBanknotes = %d tenBanknotes = %d oneBanknotes = %d\n\n",
-                    hundredBanknotes, tenBanknotes, oneBanknotes);
+                    fromATM100, fromATM10, fromATM1);
         }
     }
 }
