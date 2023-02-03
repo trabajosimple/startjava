@@ -6,7 +6,7 @@ public class Calculator {
         performMathOperation(100, 50, '/');
         performMathOperation(100, 50, '%');
         performMathOperation(100, 5, '^');
-    }
+    } 
 
     static void performMathOperation(int a, int b, char sign) {
 

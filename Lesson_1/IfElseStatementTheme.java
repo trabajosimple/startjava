@@ -148,8 +148,8 @@ public class IfElseStatementTheme {
         }
 
         accruedIncome = deposit * depositRate;
-        System.out.printf("For deposit %.2f accrued income is %.2f and at the end of the year the total sum of " +
-                "the deposit is %.2f\n\n",
+        System.out.printf("For deposit %.2f accrued income is %.2f and at the end of the year the" +
+                " total sum of the deposit is %.2f\n\n",
                 deposit, accruedIncome, deposit + accruedIncome);
     }
 
@@ -157,18 +157,18 @@ public class IfElseStatementTheme {
         System.out.println("7. Определение оценки по предметам");
 
         int historyPercent = 59;
-        int programPercent = 91;
+        int programmingPercent = 91;
         int historyMark = determineMark(historyPercent);
-        int programMark = determineMark(programPercent);
+        int programmingMark = determineMark(programmingPercent);
 
         System.out.printf("History mark %d and in percent %d\n", historyMark, historyPercent);
 
-        System.out.printf("Programming mark %d and in percent %d\n", programMark,
-                programPercent);
+        System.out.printf("Programming mark %d and in percent %d\n", programmingMark,
+                programmingPercent);
 
         System.out.printf("Average mark %.1f and in percent %.1f\n\n",
-                (float) ((historyMark + programMark) / 2),
-                (float) ((historyPercent + programPercent) / 2));
+                (float) ((historyMark + programmingMark) / 2),
+                (float) ((historyPercent + programmingPercent) / 2));
     }
 
     static short determineMark(int markInPercent) {
@@ -193,7 +193,7 @@ public class IfElseStatementTheme {
 
         if (annualIncome > 0) {
             System.out.println("Annual income : +" + annualIncome);
-        } else if (annualIncome == 0) {
+        } else {
             System.out.println("Annual income : " + annualIncome);
         }
     }
@@ -224,8 +224,8 @@ public class IfElseStatementTheme {
         if (fromATM1 > inATM1) {
             System.out.println("not enough banknotes in ATM\n\n");
         } else {
-            System.out.printf("You will get hundredBanknotes = %d tenBanknotes = %d oneBanknotes = %d\n\n",
-                    fromATM100, fromATM10, fromATM1);
+            System.out.printf("You will get hundredBanknotes = %d tenBanknotes = %d oneBanknotes " +
+                    "= %d\n\n", fromATM100, fromATM10, fromATM1);
         }
 
         System.out.printf("Original sum = %d and recalculated sum = %d\n", withdrawalAmount,

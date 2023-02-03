@@ -28,8 +28,8 @@ public class CyclesTheme {
 
         } while (num <= 21);
 
-        System.out.printf("In the interval [-10, 21] the sum of the even numbers is %d and the sum of " +
-                "odd numbers is %d\n\n",
+        System.out.printf("In the interval [-10, 21] the sum of the even numbers is %d and the " +
+                "sum of odd numbers is %d\n\n",
                 evenSum, oddSum);
     }
 
@@ -81,8 +81,8 @@ public class CyclesTheme {
             reverseBase /= 10;
         }
 
-        System.out.printf("an original number %d, the number in reverse order of its figures %d, the sum " +
-                "of its figures %d\n\n",
+        System.out.printf("an original number %d, the number in reverse order of its figures %d, " +
+                "the sum of its figures %d\n\n",
                 srcNum, reverseNum, sumOfFigures);
     }
 
@@ -209,11 +209,11 @@ public class CyclesTheme {
         }
 
         if (srcNum == reverseNum) {
-            System.out.printf("The figure %d is palindrome and is equal to its reverse form - %d\n", srcNum
-                    , reverseNum);
-        } else {
-            System.out.printf("The figure %d is not palindrome and is not equal to its reverse form - " +
+            System.out.printf("The figure %d is palindrome and is equal to its reverse form - " +
                     "%d\n", srcNum, reverseNum);
+        } else {
+            System.out.printf("The figure %d is not palindrome and is not equal to its reverse " +
+                    "form - %d\n", srcNum, reverseNum);
         }
     }
 
@@ -241,11 +241,12 @@ public class CyclesTheme {
         }
 
         if (sumLeft == sumRight) {
-            System.out.printf("A lucky number, sum of the left figures is equal to the right ones %s = %s\n",
+            System.out.printf("A lucky number, sum of the left figures is equal to the right ones" +
+                    " %s = %s\n",
                     left, right);
         } else {
-            System.out.printf("Not a lucky number, sum of the left figures is not equal to the right ones" +
-                    "%s != %s\n", left, right);
+            System.out.printf("Not a lucky number, sum of the left figures is not equal to the " +
+                    "right ones %s != %s\n", left, right);
         }
     }
 
@@ -272,6 +273,5 @@ public class CyclesTheme {
                 System.out.println("------------------------------");
             }
         }
-
     }
 }
