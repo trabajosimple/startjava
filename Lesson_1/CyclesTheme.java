@@ -212,19 +212,21 @@ public class CyclesTheme {
         int sumRight = 0;
         String left = "";
         String right = "";
-        int base = 1;
         int digit;
+        int copySrcNumber = srcNumber;
+        int counter = 0;
 
-        for (int i = 0; i < 6; i++) {
-            digit = srcNumber / base % 10;
-            if (i < 3) {
+        while (copySrcNumber >= 1) {
+            digit = copySrcNumber  % 10;
+            if (counter < 3) {
                 sumLeft += digit;
                 left += digit;
             } else {
                 sumRight += digit;
                 right += digit;
             }
-            base *= 10;
+            counter++;
+            copySrcNumber /= 10;
         }
 
         if (sumLeft == sumRight) {
