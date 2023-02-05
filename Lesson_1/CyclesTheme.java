@@ -7,8 +7,8 @@ public class CyclesTheme {
         checkNumOfTwosForEvenOrOdd();
         printThreeShapes();
         printPartOfASCIITable();
-        checkNumForPalindrome();
-        checkNumForLucky();
+        checkNumberForPalindrome();
+        checkNumberForLucky();
         printPythagoreanMultTable();
     }
 
@@ -16,49 +16,49 @@ public class CyclesTheme {
         System.out.println("1. Подсчет суммы четных и нечетных чисел");
 
         byte counter = -10;
-        int sumOfEvenNum = 0;
-        int sumOfOddNum = 0;
+        int sumOfEvenNumbers = 0;
+        int sumOfOddNumbers = 0;
 
         do {
             if (counter % 2 == 0) {
-                sumOfEvenNum += counter;
+                sumOfEvenNumbers += counter;
             } else {
-                sumOfOddNum += counter;
+                sumOfOddNumbers += counter;
             }
             counter++;
         } while (counter <= 21);
 
         System.out.printf("In the interval [-10, 21] the sum of the even numbers is %d and the " +
-                        "sum of odd numbers is %d\n\n",
-                sumOfEvenNum, sumOfOddNum);
+                "sum of odd numbers is %d\n\n",
+                sumOfEvenNumbers, sumOfOddNumbers);
     }
 
     static void showNumbersInDescOrder() {
         System.out.println("2. Вывод чисел в интервале (min и max) в порядке убывания");
 
-        int num1 = 10;
-        int num2 = 5;
-        int num3 = -1;
+        int number1 = 10;
+        int number2 = 5;
+        int number3 = -1;
 
-        int minNum = num1;
-        int maxNum = num1;
+        int min = number1;
+        int max = number1;
 
-        if (num2<minNum) {
-          minNum = num2;
+        if (number2 < min) {
+            min = number2;
         }
-        if(num3<minNum){
-            minNum = num3;
+        if (number3 < min) {
+            min = number3;
         }
-        if(num2 > maxNum){
-            maxNum = num2;
+        if (number2 > max) {
+            max = number2;
         }
-        if(num3 > maxNum){
-            maxNum = num3;
+        if (number3 > max) {
+            max = number3;
         }
 
-        System.out.printf("the original numbers %d %d %d \n", num1, num2, num3);
+        System.out.printf("the original numbers %d %d %d \n", number1, number2, number3);
 
-        for (int i = minNum + 1; i < maxNum; i++) {
+        for (int i = max - 1; i > min; i--) {
             System.out.printf("%d ", i);
         }
     }
@@ -66,18 +66,18 @@ public class CyclesTheme {
     static void showFiguresInRevOrderWithSum() {
         System.out.println("\n\n3. Вывод реверсивного числа и суммы его цифр");
 
-        int srcNum = 1234;
+        int srcNumber = 1234;
         int sumOfDigits = 0;
-        int remainder = srcNum;
-        int digit = 0;
+        int copySrcNumber = srcNumber;
+        int digit = copySrcNumber % 10;
 
-        System.out.printf("an original number %d\nthe reversed number ", srcNum);
+        System.out.printf("an original number %d\nthe reversed number ", srcNumber);
 
-        while (remainder >= 1) {
-            digit = remainder % 10;
-            System.out.printf("%d", digit);
+        while (copySrcNumber >= 1) {
+            System.out.print(digit);
             sumOfDigits += digit;
-            remainder /= 10;
+            copySrcNumber /= 10;
+            digit = copySrcNumber % 10;
         }
 
         System.out.printf("\nthe sum of its figures %d\n\n", sumOfDigits);
@@ -86,13 +86,13 @@ public class CyclesTheme {
     static void printNumbersInMultLines() {
         System.out.println("4. Вывод чисел на консоль в несколько строк");
 
-        int maxNum = 24;
+        int max = 24;
         int numbersInLine = 5;
         int counter = 1;
 
-        for (int i = 0; i < maxNum / (2*numbersInLine) + 1; i++) {
+        for (int i = 1; i <= max / (2 * numbersInLine); i++) {
             for (int j = 0; j < 5; j++) {
-                if(counter >= maxNum){
+                if (counter >= max) {
                     System.out.printf("%2d ", 0);
                 } else {
                     System.out.printf("%2d ", counter);
@@ -105,24 +105,20 @@ public class CyclesTheme {
 
     static void checkNumOfTwosForEvenOrOdd() {
         System.out.println("\n5. Проверка количества двоек на четность/нечетность");
-        int num = 3_242_592;
+        int srcNumber = 3_242_592;
         int amountOfTwos = 0;
+        int copySrcNumber = srcNumber;
+        ;
 
-        int base = 1;
-        while (base <= 1_000_000) {
-            if (num / base % 10 == 2) {
-                ++amountOfTwos;
+        while (copySrcNumber >= 1) {
+            if (copySrcNumber % 10 == 2) {
+                amountOfTwos++;
             }
-            base *= 10;
+            copySrcNumber /= 10;
         }
 
-        if (amountOfTwos % 2 == 0) {
-            System.out.printf("The number %d contains %d - even amount of figure 2\n\n", num,
-                    amountOfTwos);
-        } else {
-            System.out.printf("The number %d contains %d - odd amount of figure 2\n\n", num,
-                    amountOfTwos);
-        }
+        System.out.printf("The number %d contains %d - " + (amountOfTwos % 2 == 0 ? "even" :
+                "odd") + " amount\n\n", srcNumber, amountOfTwos);
     }
 
     static void printThreeShapes() {
@@ -133,50 +129,43 @@ public class CyclesTheme {
         int triangleBase = 5;
         int triangleHeight = (triangleBase + 1) / 2;
 
-        String line;
-        int i;
-        int j;
-
-        for (i = 0; i < rectangleVerSide; i++) {
-            line = "";
-            for (j = 0; j < rectangleHorSide; j++) {
-                line += '*';
+        for (int i = 0; i < rectangleVerSide; i++) {
+            for (int j = 0; j < rectangleHorSide; j++) {
+                System.out.print('*');
             }
-            System.out.println(line);
+            System.out.println();
         }
         System.out.println();
 
-        i = rightTriangleLeg;
-        while (i > 0) {
-            j = 0;
-            line = "";
-            while (j < i) {
-                line += "#";
-                j++;
+        int height = rightTriangleLeg;
+        int length = 0;
+        while (height > 0) {
+            while (length < height) {
+                System.out.print('#');
+                length++;
             }
-            System.out.println(line);
-            i--;
+            System.out.println();
+            height--;
+            length = 0;
         }
         System.out.println();
 
-        i = 1;
-        int lineSize = 0;
+        height = 1;
+        int lineSize;
         do {
-            if (i <= triangleHeight) {
-                lineSize = i;
+            if (height <= triangleHeight) {
+                lineSize = height;
             } else {
-                lineSize = triangleHeight - (i - (triangleBase + 1) / 2);
+                lineSize = triangleHeight - (height - (triangleBase + 1) / 2);
             }
-            line = "";
-            j = 1;
-
+            length = 1;
             do {
-                line += "$";
-                j++;
-            } while (j <= lineSize);
-            System.out.println(line);
-            i++;
-        } while (i <= triangleBase);
+                System.out.print('$');
+                length++;
+            } while (length <= lineSize);
+            System.out.println();
+            height++;
+        } while (height <= triangleBase);
     }
 
     static void printPartOfASCIITable() {
@@ -191,57 +180,56 @@ public class CyclesTheme {
         }
     }
 
-    static void checkNumForPalindrome() {
+    static void checkNumberForPalindrome() {
         System.out.println("\n8. Проверка, является ли число палиндромом");
 
-        int srcNum = 1_234_321;
-        int reverseNum = 0;
+        int srcNumber = 1_234_321;
+        int reverseNumber = 0;
 
-        int base = 1;
         int reverseBase = 1_000_000;
 
-        while (base <= 1_000_000) {
-            reverseNum += (srcNum / base % 10) * reverseBase;
-
-            base *= 10;
+        int copySrcNumber = srcNumber;
+        while (copySrcNumber >= 1) {
+            reverseNumber += (copySrcNumber % 10) * reverseBase;
+            copySrcNumber /= 10;
             reverseBase /= 10;
         }
 
-        if (srcNum == reverseNum) {
+        if (srcNumber == reverseNumber) {
             System.out.printf("The figure %d is palindrome and is equal to its reverse form - " +
-                    "%d\n", srcNum, reverseNum);
+                    "%d\n", srcNumber, reverseNumber);
         } else {
             System.out.printf("The figure %d is not palindrome and is not equal to its reverse " +
-                    "form - %d\n", srcNum, reverseNum);
+                    "form - %d\n", srcNumber, reverseNumber);
         }
     }
 
-    static void checkNumForLucky() {
+    static void checkNumberForLucky() {
         System.out.println("\n9. Определение, является ли число счастливым");
 
-        int srcNum = 662_626;
+        int srcNumber = 662_626;
         int sumLeft = 0;
         int sumRight = 0;
         String left = "";
         String right = "";
         int base = 1;
-        int figure;
+        int digit;
 
         for (int i = 0; i < 6; i++) {
-            figure = srcNum / base % 10;
+            digit = srcNumber / base % 10;
             if (i < 3) {
-                sumLeft += figure;
-                left += figure;
+                sumLeft += digit;
+                left += digit;
             } else {
-                sumRight += figure;
-                right += figure;
+                sumRight += digit;
+                right += digit;
             }
             base *= 10;
         }
 
         if (sumLeft == sumRight) {
             System.out.printf("A lucky number, sum of the left figures is equal to the right ones" +
-                            " %s = %s\n",
+                    " %s = %s\n",
                     left, right);
         } else {
             System.out.printf("Not a lucky number, sum of the left figures is not equal to the " +
