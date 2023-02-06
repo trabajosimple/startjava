@@ -65,34 +65,26 @@ public class CyclesTheme {
 
     static void showFiguresInRevOrderWithSum() {
         System.out.println("\n\n3. Вывод реверсивного числа и суммы его цифр");
-
         int srcNumber = 1234;
         int sumOfDigits = 0;
         int copySrcNumber = srcNumber;
-        int digit = copySrcNumber % 10;
-
         System.out.printf("an original number %d\nthe reversed number ", srcNumber);
-
         while (copySrcNumber >= 1) {
+            int digit = copySrcNumber % 10;
             System.out.print(digit);
             sumOfDigits += digit;
             copySrcNumber /= 10;
-            digit = copySrcNumber % 10;
         }
-
         System.out.printf("\nthe sum of its figures %d\n\n", sumOfDigits);
     }
 
     static void printNumbersInMultLines() {
         System.out.println("4. Вывод чисел на консоль в несколько строк");
-
-        int max = 24;
-        int numbersInLine = 5;
+        int endOfInterval = 24;
         int counter = 1;
-
-        for (int i = 1; i <= max / (2 * numbersInLine); i++) {
+        while (counter < endOfInterval) {
             for (int j = 0; j < 5; j++) {
-                if (counter >= max) {
+                if (counter >= endOfInterval) {
                     System.out.printf("%2d ", 0);
                 } else {
                     System.out.printf("%2d ", counter);
@@ -108,7 +100,6 @@ public class CyclesTheme {
         int srcNumber = 3_242_592;
         int amountOfTwos = 0;
         int copySrcNumber = srcNumber;
-        ;
 
         while (copySrcNumber >= 1) {
             if (copySrcNumber % 10 == 2) {
@@ -116,56 +107,51 @@ public class CyclesTheme {
             }
             copySrcNumber /= 10;
         }
-
         System.out.printf("The number %d contains %d - " + (amountOfTwos % 2 == 0 ? "even" :
                 "odd") + " amount\n\n", srcNumber, amountOfTwos);
     }
 
     static void printThreeShapes() {
         System.out.println("6. Отображение фигур в консоли");
-        int rectangleHorSide = 10;
-        int rectangleVerSide = 5;
-        int rightTriangleLeg = 5;
-        int triangleBase = 5;
-        int triangleHeight = (triangleBase + 1) / 2;
-
-        for (int i = 0; i < rectangleVerSide; i++) {
-            for (int j = 0; j < rectangleHorSide; j++) {
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 5; j++) {
                 System.out.print('*');
             }
             System.out.println();
         }
         System.out.println();
 
-        int height = rightTriangleLeg;
-        int length = 0;
-        while (height > 0) {
-            while (length < height) {
+        int rows = 5;
+        int columns = 0;
+        while (rows > 0) {
+            while (columns < rows) {
                 System.out.print('#');
-                length++;
+                columns++;
             }
             System.out.println();
-            height--;
-            length = 0;
+            rows--;
+            columns = 0;
         }
         System.out.println();
 
-        height = 1;
+        int maxRows = 5;
+        int maxColumns = (maxRows + 1) / 2;
+        rows = 1;
         int lineSize;
         do {
-            if (height <= triangleHeight) {
-                lineSize = height;
+            if (rows <= maxColumns) {
+                lineSize = rows;
             } else {
-                lineSize = triangleHeight - (height - (triangleBase + 1) / 2);
+                lineSize = maxColumns - (rows - (maxRows + 1) / 2);
             }
-            length = 1;
+            columns = 1;
             do {
                 System.out.print('$');
-                length++;
-            } while (length <= lineSize);
+                columns++;
+            } while (columns <= lineSize);
             System.out.println();
-            height++;
-        } while (height <= triangleBase);
+            rows++;
+        } while (rows <= maxRows);
     }
 
     static void printPartOfASCIITable() {
@@ -185,10 +171,9 @@ public class CyclesTheme {
 
         int srcNumber = 1_234_321;
         int reverseNumber = 0;
-
         int reverseBase = 1_000_000;
-
         int copySrcNumber = srcNumber;
+
         while (copySrcNumber >= 1) {
             reverseNumber += (copySrcNumber % 10) * reverseBase;
             copySrcNumber /= 10;
@@ -210,25 +195,23 @@ public class CyclesTheme {
         int srcNumber = 662_626;
         int sumLeft = 0;
         int sumRight = 0;
-        String left = "";
-        String right = "";
         int digit;
         int copySrcNumber = srcNumber;
         int counter = 0;
 
         while (copySrcNumber >= 1) {
-            digit = copySrcNumber  % 10;
+            digit = copySrcNumber % 10;
             if (counter < 3) {
                 sumLeft += digit;
-                left += digit;
             } else {
                 sumRight += digit;
-                right += digit;
             }
             counter++;
             copySrcNumber /= 10;
         }
 
+        int left = srcNumber / 1000;
+        int right = srcNumber % 1000;
         if (sumLeft == sumRight) {
             System.out.printf("A lucky number, sum of the left figures is equal to the right ones" +
                     " %s = %s\n",
