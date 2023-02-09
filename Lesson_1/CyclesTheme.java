@@ -171,9 +171,15 @@ public class CyclesTheme {
 
         int srcNumber = 1_234_321;
         int reverseNumber = 0;
-        int reverseBase = 1_000_000;
         int copySrcNumber = srcNumber;
+        int reverseBase = 1;
 
+        while (copySrcNumber > 1) {
+            copySrcNumber /= 10;
+            reverseBase *= 10;
+        }
+
+        copySrcNumber = srcNumber;
         while (copySrcNumber >= 1) {
             reverseNumber += (copySrcNumber % 10) * reverseBase;
             copySrcNumber /= 10;
@@ -195,12 +201,11 @@ public class CyclesTheme {
         int srcNumber = 662_626;
         int sumLeft = 0;
         int sumRight = 0;
-        int digit;
         int copySrcNumber = srcNumber;
         int counter = 0;
 
         while (copySrcNumber >= 1) {
-            digit = copySrcNumber % 10;
+            int digit = copySrcNumber % 10;
             if (counter < 3) {
                 sumLeft += digit;
             } else {
