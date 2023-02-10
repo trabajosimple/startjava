@@ -11,11 +11,11 @@ public class MyFirstGame {
     }
 
     static void guessNumber(int guessedNum) {
-        int player = 43;
+        int playerNum = 43;
 
-        while (guessedNum != player) {
+        while (guessedNum != playerNum) {
             System.out.print("Fail to guess the number! ");
-            if (guessedNum > player) {
+            if (guessedNum > playerNum) {
                 System.out.println("It is more than what the comp guessed");
             } else {
                 System.out.println("Is is less than what the comp guessed");

@@ -10,7 +10,6 @@ public class Calculator {
 
     static void calculate(int a, int b, char sign) {
         double result;
-
         if (sign == '+') {
             result = a + b;
         } else if (sign == '-') {
@@ -29,9 +28,8 @@ public class Calculator {
             if (b == 0) {
                 System.out.println("Error: cannot divide by zero");
                 return;
-            } else {
-                result = a % b;
             }
+            result = a % b;
         } else {
             System.out.println("Error: unknown sign " + sign);
             return;
@@ -41,7 +39,6 @@ public class Calculator {
 
     static double power(int num, int pow) {
         double result = 1;
-
         if (pow > 0) {
             for (int i = 1; i <= pow; i++) {
                 result *= num;
@@ -53,5 +50,4 @@ public class Calculator {
         }
         return result;
     }
-
 }

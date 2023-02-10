@@ -172,18 +172,10 @@ public class CyclesTheme {
         int srcNumber = 1_234_321;
         int reverseNumber = 0;
         int copySrcNumber = srcNumber;
-        int reverseBase = 1;
 
-        while (copySrcNumber > 1) {
-            copySrcNumber /= 10;
-            reverseBase *= 10;
-        }
-
-        copySrcNumber = srcNumber;
         while (copySrcNumber >= 1) {
-            reverseNumber += (copySrcNumber % 10) * reverseBase;
+            reverseNumber = reverseNumber*10 + copySrcNumber % 10;
             copySrcNumber /= 10;
-            reverseBase /= 10;
         }
 
         if (srcNumber == reverseNumber) {
