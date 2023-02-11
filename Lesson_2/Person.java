@@ -7,11 +7,11 @@ public class Person {
     public int age;
 
     public Person() {
-        this.gender = 'M';
-        this.name = "Moisey Petrovich Grigorian";
-        this.height = 153;
-        this.weight = 120;
-        this.age = 89;
+        gender = 'M';
+        name = "Moisey Petrovich Grigorian";
+        height = 153;
+        weight = 120;
+        age = 89;
     }
 
     public void walk() {
