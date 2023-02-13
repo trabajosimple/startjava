@@ -4,27 +4,26 @@ public class GuessNumberTest {
 
     public static void main(String[] args) {
         Scanner console = new Scanner(System.in);
-        System.out.print("Enter first player name: ");
-        String playerName = console.nextLine();
-        if(playerName.isBlank()){
-            System.out.println("Invalid name was entered");
-        }
-        Player player1 = new Player(playerName);
-        System.out.print("Enter second player name: ");
-        playerName = console.nextLine();
-        if(playerName.isBlank()){
-            System.out.println("Invalid name was entered");
-        }
-        Player player2 = new Player(playerName);
-
         String response;
-        do{
-            GuessNumber guessNumber = new GuessNumber(player1, player2);
-            guessNumber.play(console);
+        do {
+            System.out.print("Enter first player name: ");
+            response = console.nextLine();
+        } while (response.isBlank());
+        Player player1 = new Player(response);
+
+        do {
+            System.out.print("Enter second player name: ");
+            response = console.nextLine();
+        } while (response.isBlank());
+        Player player2 = new Player(response);
+
+        do {
+            GuessNumber game = new GuessNumber(player1, player2);
+            game.play(console);
             do {
                 System.out.print("Do you want to continue? [yes/no]: ");
                 response = console.nextLine();
-            } while (!(response.equals("yes") || response.equals("no")));
+            } while (!response.equals("yes") && !response.equals("no"));
         } while (response.equals("yes"));
     }
 }

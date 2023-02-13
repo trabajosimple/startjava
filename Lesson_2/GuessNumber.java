@@ -2,7 +2,6 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class GuessNumber {
-
     private int guessedNum;
     private Player player1;
     private Player player2;
@@ -18,22 +17,22 @@ public class GuessNumber {
     }
 
     private boolean checkNumber(Player player) {
-        if (player.getEnteredNumber() != this.guessedNum) {
-            System.out.printf("Player %s failed to guess the number!\n", player.getPlayerName());
-            if (player.getEnteredNumber() > this.guessedNum) {
+        if (player.getNumber() != this.guessedNum) {
+            System.out.printf("Player %s failed to guess the number!\n", player.getName());
+            if (player.getNumber() > this.guessedNum) {
                 System.out.println("It is more than what the comp guessed");
-            } else if (player.getEnteredNumber() < this.guessedNum) {
+            } else if (player.getNumber() < this.guessedNum) {
                 System.out.println("Is is less than what the comp guessed");
             }
             return false;
         }
-        System.out.printf("Player %s guessed the number!\n", player.getPlayerName());
+        System.out.printf("Player %s guessed the number!\n", player.getName());
         return true;
     }
 
     private void enterNumber(Player player, Scanner console) {
-        System.out.printf("it's the %s's turn to guess the number: ", player.getPlayerName());
-        player.setEnteredNumber(Integer.parseInt(console.nextLine()));
+        System.out.printf("it's the %s's turn to guess the number: ", player.getName());
+        player.setNumber(Integer.parseInt(console.nextLine()));
     }
 
     public void play(Scanner console) {

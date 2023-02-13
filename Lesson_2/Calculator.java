@@ -1,6 +1,5 @@
 public class Calculator {
     double calculate(int a, int b, char sign) {
-
         switch (sign) {
             case '+':
                 return a + b;
