@@ -19,6 +19,5 @@ public class JaegerTest {
         System.out.println("Robot1 - " + robot1.toString());
         robot1.drift();
         robot2.move();
-
     }
 }

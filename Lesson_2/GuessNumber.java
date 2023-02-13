@@ -31,19 +31,19 @@ public class GuessNumber {
         return true;
     }
 
-    private void enterNumber(Player player, Scanner keyboardInput) {
+    private void enterNumber(Player player, Scanner console) {
         System.out.printf("it's the %s's turn to guess the number: ", player.getPlayerName());
-        player.setEnteredNumber(Integer.parseInt(keyboardInput.nextLine()));
+        player.setEnteredNumber(Integer.parseInt(console.nextLine()));
     }
 
-    public void play(Scanner keyboardInput) {
+    public void play(Scanner console) {
         boolean ifWin;
         chooseNumber();
         do {
-            enterNumber(player1, keyboardInput);
+            enterNumber(player1, console);
             ifWin = checkNumber(player1);
             if (ifWin) break;
-            enterNumber(player2, keyboardInput);
+            enterNumber(player2, console);
             ifWin = checkNumber(player2);
         } while (!ifWin);
     }

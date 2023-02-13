@@ -3,20 +3,21 @@ import java.util.Scanner;
 public class CalculatorTest {
 
     public static void main(String[] args) {
-        Scanner keyboardInput = new Scanner(System.in);
-        System.out.println();
+        Scanner console = new Scanner(System.in);
         String response;
         do {
-            System.out.print("Enter the first number: ");
-            int firstNumber = Integer.parseInt(keyboardInput.nextLine());
+            System.out.print("\nEnter the first number: ");
+            int number1 = Integer.parseInt(console.nextLine());
             System.out.print("Enter the sign of the math operation: ");
-            char sign = keyboardInput.nextLine().charAt(0);
+            char sign = console.nextLine().charAt(0);
             System.out.print("Enter the second number: ");
-            int secondNumber = Integer.parseInt(keyboardInput.nextLine());
+            int number2 = Integer.parseInt(console.nextLine());
             Calculator calc = new Calculator();
-            System.out.println("Result: " + calc.calculate(firstNumber, secondNumber, sign));
-            System.out.print("Do you want to continue? [yes/no]: ");
-            response = keyboardInput.nextLine();
+            System.out.println("Result: " + calc.calculate(number1, number2, sign));
+            do {
+                System.out.print("Do you want to continue? [yes/no]: ");
+                response = console.nextLine();
+            } while (!(response.equals("yes") || response.equals("no")));
         } while (response.equals("yes"));
     }
 }

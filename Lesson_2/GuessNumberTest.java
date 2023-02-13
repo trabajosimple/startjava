@@ -3,15 +3,15 @@ import java.util.Scanner;
 public class GuessNumberTest {
 
     public static void main(String[] args) {
-        Scanner keyboardInput = new Scanner(System.in);
+        Scanner console = new Scanner(System.in);
         System.out.print("Enter first player name: ");
-        String playerName = keyboardInput.nextLine();
+        String playerName = console.nextLine();
         if(playerName.isBlank()){
             System.out.println("Invalid name was entered");
         }
         Player player1 = new Player(playerName);
         System.out.print("Enter second player name: ");
-        playerName = keyboardInput.nextLine();
+        playerName = console.nextLine();
         if(playerName.isBlank()){
             System.out.println("Invalid name was entered");
         }
@@ -20,9 +20,11 @@ public class GuessNumberTest {
         String response;
         do{
             GuessNumber guessNumber = new GuessNumber(player1, player2);
-            guessNumber.play(keyboardInput);
-            System.out.print("Do you want to continue? [yes/no]: ");
-            response = keyboardInput.nextLine();
+            guessNumber.play(console);
+            do {
+                System.out.print("Do you want to continue? [yes/no]: ");
+                response = console.nextLine();
+            } while (!(response.equals("yes") || response.equals("no")));
         } while (response.equals("yes"));
     }
 }
