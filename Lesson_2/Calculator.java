@@ -27,15 +27,15 @@ public class Calculator {
         return 0;
     }
 
-    double power(int num, int pow) {
+    double power(int number, int pow) {
         double result = 1;
         if (pow > 0) {
             for (int i = 1; i <= pow; i++) {
-                result *= num;
+                result *= number;
             }
         } else {
             for (int i = -1; i >= pow; i--) {
-                result /= num;
+                result /= number;
             }
         }
         return result;

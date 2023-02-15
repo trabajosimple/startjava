@@ -1,5 +1,4 @@
 public class Person {
-
     public char gender;
     public String name;
     public int height;

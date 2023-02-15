@@ -11,23 +11,13 @@ public class GuessNumber {
         this.player2 = player2;
     }
 
-    private void chooseNumber() {
-        Random rand = new Random();
-        guessedNum = rand.nextInt(100) + 1;
-    }
-
-    private boolean checkNumber(Player player) {
-        if (player.getNumber() != this.guessedNum) {
-            System.out.printf("Player %s failed to guess the number!\n", player.getName());
-            if (player.getNumber() > this.guessedNum) {
-                System.out.println("It is more than what the comp guessed");
-            } else if (player.getNumber() < this.guessedNum) {
-                System.out.println("Is is less than what the comp guessed");
-            }
-            return false;
-        }
-        System.out.printf("Player %s guessed the number!\n", player.getName());
-        return true;
+    public void play(Scanner console) {
+        chooseRandomNumber();
+        do {
+            enterNumber(player1, console);
+            if (isGuessed(player1)) break;
+            enterNumber(player2, console);
+        } while (!isGuessed(player2));
     }
 
     private void enterNumber(Player player, Scanner console) {
@@ -35,15 +25,23 @@ public class GuessNumber {
         player.setNumber(Integer.parseInt(console.nextLine()));
     }
 
-    public void play(Scanner console) {
-        boolean ifWin;
-        chooseNumber();
-        do {
-            enterNumber(player1, console);
-            ifWin = checkNumber(player1);
-            if (ifWin) break;
-            enterNumber(player2, console);
-            ifWin = checkNumber(player2);
-        } while (!ifWin);
+    private void chooseRandomNumber() {
+        Random rand = new Random();
+        guessedNum = rand.nextInt(100) + 1;
+    }
+
+    private boolean isGuessed(Player player) {
+        String comparisonResult;
+        if (player.getNumber() == guessedNum) {
+            System.out.printf("Player %s guessed the number!\n", player.getName());
+            return true;
+        } else if (player.getNumber() > guessedNum) {
+            comparisonResult = "more";
+        } else {
+            comparisonResult = "less";
+        }
+        System.out.printf("Player %s failed to guess the number!\n", player.getName());
+        System.out.printf("It is %s than what the comp guessed\n", comparisonResult);
+        return false;
     }
 }
