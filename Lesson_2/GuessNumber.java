@@ -2,7 +2,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class GuessNumber {
-    private int guessedNum;
+    private int guessedNumber;
     private Player player1;
     private Player player2;
 
@@ -12,7 +12,7 @@ public class GuessNumber {
     }
 
     public void play(Scanner console) {
-        chooseRandomNumber();
+        chooseGuessedNumber();
         do {
             enterNumber(player1, console);
             if (isGuessed(player1)) break;
@@ -25,21 +25,18 @@ public class GuessNumber {
         player.setNumber(Integer.parseInt(console.nextLine()));
     }
 
-    private void chooseRandomNumber() {
+    private void chooseGuessedNumber() {
         Random rand = new Random();
-        guessedNum = rand.nextInt(100) + 1;
+        guessedNumber = rand.nextInt(100) + 1;
     }
 
     private boolean isGuessed(Player player) {
         String comparisonResult;
-        if (player.getNumber() == guessedNum) {
+        if (player.getNumber() == guessedNumber) {
             System.out.printf("Player %s guessed the number!\n", player.getName());
             return true;
-        } else if (player.getNumber() > guessedNum) {
-            comparisonResult = "more";
-        } else {
-            comparisonResult = "less";
         }
+        comparisonResult = player.getNumber() > guessedNumber ? "more" : "less";
         System.out.printf("Player %s failed to guess the number!\n", player.getName());
         System.out.printf("It is %s than what the comp guessed\n", comparisonResult);
         return false;
