@@ -1,3 +1,6 @@
+package com.startjava.lesson_2_3.guess;
+import com.startjava.lesson_2_3.person.Player;
+
 import java.util.Random;
 import java.util.Scanner;
 
@@ -20,14 +23,14 @@ public class GuessNumber {
         } while (!isGuessed(player2));
     }
 
-    private void enterNumber(Player player, Scanner console) {
-        System.out.printf("it's the %s's turn to guess the number: ", player.getName());
-        player.setNumber(Integer.parseInt(console.nextLine()));
-    }
-
     private void chooseGuessedNumber() {
         Random rand = new Random();
         guessedNumber = rand.nextInt(100) + 1;
+    }
+
+    private void enterNumber(Player player, Scanner console) {
+        System.out.printf("it's the %s's turn to guess the number: ", player.getName());
+        player.setNumber(Integer.parseInt(console.nextLine()));
     }
 
     private boolean isGuessed(Player player) {

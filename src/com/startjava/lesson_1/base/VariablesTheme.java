@@ -1,3 +1,5 @@
+package com.startjava.lesson_1.base;
+
 public class VariablesTheme {
     public static void main(String[] args) {
         displayPrimitiveDataTypes();
@@ -13,7 +15,6 @@ public class VariablesTheme {
 
     static void displayPrimitiveDataTypes() {
         System.out.println("1. Вывод значений переменных на консоль");
-
         byte ramSizeInGB = 16;
         short cpuCores = 6;
         int cpuSpeedInKHertz = 27_000_000;
@@ -22,7 +23,6 @@ public class VariablesTheme {
         double cpuTurboSpeedInGHertz = 4.7D;
         boolean touchScreen = true;
         char noteBookSize = 'M';
-
         System.out.printf("NoteBook characteristics: { ramSizeInGB: %s, cpuCores: %s, " +
                         "cpuSpeedInKHertz: %s, storageInKByte: %s, displaySize: %s, " +
                         "cpuTurboSpeedInGHertz: %s, touchScreen: %s, noteBookSize: %s} \n\n",
@@ -32,7 +32,6 @@ public class VariablesTheme {
 
     static void calculateDiscountPrice() {
         System.out.println("2. Расчет стоимости товара со скидкой");
-
         float penPrice = 100F;
         float bookPrice = 200F;
         float discountPercent = 11 / 100F;
@@ -100,7 +99,6 @@ public class VariablesTheme {
         char char64 = '@';
         char char94 = '^';
         char char95 = '_';
-
         System.out.printf(" Char - Code\n");
         System.out.printf("   %s - %s\n", char35, (short) char35);
         System.out.printf("   %s - %s\n", char38, (short) char38);
@@ -129,11 +127,9 @@ public class VariablesTheme {
     static void displayRanksOfNumber() {
         System.out.println("8. Вывод количества сотен, десятков и единиц числа");
         int num = 123;
-
         int ones = num % 10;
         int tens = num / 10 % 10;
         int hundreds = num / 100;
-
         System.out.printf("Число %d содержит:\n" + "%d сотен\n" + "%d десятков\n" + "%d единиц\n " +
                         "Сумма его цифр =" + " %d\n" + "Произведение = %d\n\n", num, hundreds,
                 tens, ones, hundreds + tens + ones, hundreds * ones * tens);

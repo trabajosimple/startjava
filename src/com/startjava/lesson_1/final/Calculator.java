@@ -1,3 +1,5 @@
+package com.startjava.lesson_1.final;
+
 public class Calculator {
     double calculate(int a, int b, char sign) {
         switch (sign) {

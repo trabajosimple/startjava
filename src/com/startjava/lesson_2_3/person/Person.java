@@ -1,3 +1,5 @@
+package com.startjava.lesson_2_3.person;
+
 public class Person {
     public char gender;
     public String name;

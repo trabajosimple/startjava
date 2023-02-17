@@ -1,10 +1,13 @@
+package com.startjava.lesson_2_3.guess;
+import com.startjava.lesson_2_3.person.Player;
+
 import java.util.Scanner;
 
 public class GuessNumberTest {
     public static void main(String[] args) {
         Scanner console = new Scanner(System.in);
-        Player player1 = enterPlayerName(console, "first");
-        Player player2 = enterPlayerName(console, "second");
+        Player player1 = createPlayer(console, "first");
+        Player player2 = createPlayer(console, "second");
         GuessNumber game = new GuessNumber(player1, player2);
         String response;
         do {
@@ -16,7 +19,7 @@ public class GuessNumberTest {
         } while (response.equals("yes"));
     }
 
-    private static Player enterPlayerName(Scanner console, String position) {
+    private static Player createPlayer(Scanner console, String position) {
         String name;
         do {
             System.out.printf("Enter %s player name: ", position);
