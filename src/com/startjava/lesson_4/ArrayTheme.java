@@ -6,48 +6,50 @@ import java.util.Random;
 public class ArrayTheme {
 
     public static void main(String[] args) {
-        System.out.print("1. Реверс значений массива\nThe origin array values ");
+        System.out.println("1. Реверс значений массива");
+        System.out.println("The origin array values ");
         int[] intArr = {7, 2, 3, 5, 6, 1, 4};
         printArr(intArr);
         for (int i = 0; i < intArr.length / 2; i++) {
-            intArr[intArr.length - 1 - i] = intArr[i];
+            intArr[intArr.length - 1 - i] ^= intArr[i];
+            intArr[i] ^= intArr[intArr.length - 1 - i];
+            intArr[intArr.length - 1 - i] ^= intArr[i];
         }
         System.out.print("The reversed array values ");
         printArr(intArr);
-        //
+
         System.out.println("\n2. Вывод произведения элементов массива");
         intArr = new int[10];
         for (int i = 0; i < intArr.length; i++) {
             intArr[i] = i;
         }
         int productDigits = 1;
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < intArr.length; i++) {
             productDigits *= (i != 0 && i != 9) ? i : 1;
-            System.out.printf((i != 0 && i != 9) ? "intArr[%d]=%d " : "\n0 or 9 intArr[%d]=%d\n", i,
-                    intArr[i]);
+            System.out.printf((i != 0 && i != 9) ? (i == 8) ? "%d = %d" : "%d * " : "\nindex %d" +
+                    " value %d\n", i, (i == 8) ? productDigits : intArr[i]);
         }
-        System.out.println("\nResult of 1 * … * 8 = " + productDigits);
-        //
+
         System.out.println("\n3. Удаление элементов массива");
         double[] doubleArr = new double[15];
         for (int i = 0; i < doubleArr.length; i++) {
             Random rand = new Random();
             doubleArr[i] = rand.nextDouble();
         }
-        System.out.println("The origin array values :");
+        System.out.println("The origin array values:");
         printArrInLines(doubleArr, 8);
         double middleCellValue = doubleArr[doubleArr.length / 2];
-        int countOfZeroValues = 0;
+        int countOfZero = 0;
         for (int i = 0; i < doubleArr.length; i++) {
             if (doubleArr[i] > middleCellValue) {
                 doubleArr[i] = 0;
-                countOfZeroValues++;
+                countOfZero++;
             }
         }
-        System.out.println("The converted array values :");
+        System.out.println("The converted array values:");
         printArrInLines(doubleArr, 8);
-        System.out.println("The amount of zero values " + countOfZeroValues);
-        //
+        System.out.println("The amount of zero values " + countOfZero);
+
         System.out.println("\n4. Вывод элементов массива лесенкой в обратном порядке");
         char[] charArr = new char[26];
         for (int i = 0; i < charArr.length; i++) {
@@ -59,7 +61,7 @@ public class ArrayTheme {
             }
             System.out.println();
         }
-        //
+
         System.out.println("\n5. Генерация уникальных чисел");
         intArr = new int[30];
         Random rand = new Random();
@@ -80,29 +82,30 @@ public class ArrayTheme {
         }
         Arrays.sort(intArr);
         printArrInLines(intArr, 10);
-        //
+
         System.out.println("\n6. Копирование не пустых строк");
-        String strArr[] = {"    ", "AA", "", "BBB", "CC", "D", "    ", "E", "FF", "G", ""};
+        String[] srcStrings = {"    ", "AA", "", "BBB", "CC", "D", "    ", "E", "FF", "G", ""};
         System.out.println("The origin array values");
-        printArr(strArr);
-        int countOfNonBlankValues = 0;
-        for (String s : strArr) {
-            if (!s.isBlank()) countOfNonBlankValues++;
+        printArr(srcStrings);
+        int countOfNonBlank = 0;
+        for (String s : srcStrings) {
+            if (!s.isBlank()) countOfNonBlank++;
         }
-        String[] strShortcutArr = new String[countOfNonBlankValues];
+        String[] destStrings = new String[countOfNonBlank];
         int startSrcIndex = 0;
         int startDistIndex = 0;
-        for (int i = 0; i < strArr.length; i++) {
-            if (strArr[i].isBlank()) {
+        for (int i = 0; i < srcStrings.length; i++) {
+            if (srcStrings[i].isBlank()) {
                 if ((i - startSrcIndex) > 0) {
-                    System.arraycopy(strArr, startSrcIndex, strShortcutArr, startDistIndex, i - startSrcIndex);
+                    System.arraycopy(srcStrings, startSrcIndex, destStrings, startDistIndex,
+                           i - startSrcIndex);
                     startDistIndex += i - startSrcIndex;
                 }
                 startSrcIndex = i + 1;
             }
         }
         System.out.println("The shortcut array values");
-        printArr(strShortcutArr);
+        printArr(destStrings);
     }
 
     public static void printArr(int[] intArr) {
