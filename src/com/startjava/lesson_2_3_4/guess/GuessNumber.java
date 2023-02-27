@@ -57,25 +57,23 @@ public class GuessNumber {
     private boolean holdRound(Scanner console, int roundNumber) {
         for (Player player : players) {
             System.out.printf("it's the %s's turn to guess the number: ", player.getName());
-            player.setNumber(enterNumber(console));
+            enterNumber(player, console);
             if (isGuessed(player, roundNumber)) return true;
         }
         return false;
     }
 
-    private int enterNumber(Scanner console) {
-        int number = 0;
+    private void enterNumber(Player player, Scanner console) {
         boolean isCorrect = false;
         do {
             try {
-                number = Integer.parseInt(console.nextLine());
+                player.setNumber(Integer.parseInt(console.nextLine()));
                 isCorrect = true;
             } catch (IllegalArgumentException e) {
                 System.out.print("Invalid number, enter once more: ");
                 isCorrect = false;
             }
         } while (!isCorrect);
-        return number;
     }
 
     private boolean isGuessed(Player player, int roundNumber) {
@@ -102,7 +100,7 @@ public class GuessNumber {
         Arrays.sort(numbers);
         for (int i = numbers.length - 1; i >= numbers.length - index; i--) {
             System.out.printf("%2d ", numbers[i]);
-            if (i == index / 2) System.out.println();
+            if (i == numbers.length - (index/ 2)) System.out.println();
         }
         System.out.println();
     }
