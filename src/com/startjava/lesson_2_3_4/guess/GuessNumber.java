@@ -100,7 +100,7 @@ public class GuessNumber {
         Arrays.sort(numbers);
         for (int i = numbers.length - 1; i >= numbers.length - index; i--) {
             System.out.printf("%2d ", numbers[i]);
-            if (i == numbers.length - (index/ 2)) System.out.println();
+            if (i == numbers.length - (index / 2)) System.out.println();
         }
         System.out.println();
     }

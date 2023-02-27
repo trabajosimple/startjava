@@ -11,9 +11,10 @@ public class ArrayTheme {
         int[] intArr = {7, 2, 3, 5, 6, 1, 4};
         printArr(intArr);
         for (int i = 0; i < intArr.length / 2; i++) {
-            intArr[intArr.length - 1 - i] ^= intArr[i];
-            intArr[i] ^= intArr[intArr.length - 1 - i];
-            intArr[intArr.length - 1 - i] ^= intArr[i];
+            int j = intArr.length - 1 - i;
+            int number = intArr[i];
+            intArr[i] ^= intArr[j];
+            intArr[j] ^= number;
         }
         System.out.print("The reversed array values ");
         printArr(intArr);
@@ -24,11 +25,12 @@ public class ArrayTheme {
             intArr[i] = i;
         }
         int productDigits = 1;
-        for (int i = 0; i < intArr.length; i++) {
-            productDigits *= (i != 0 && i != 9) ? i : 1;
-            System.out.printf((i != 0 && i != 9) ? (i == 8) ? "%d = %d" : "%d * " : "\nindex %d" +
-                    " value %d\n", i, (i == 8) ? productDigits : intArr[i]);
+        for (int i = 1; i < 9; i++) {
+            productDigits *= i;
+            System.out.printf((i == 8) ? "%d = %d" : "%d * ", i, productDigits);
         }
+        System.out.printf("\nindex 0 value %d", intArr[0]);
+        System.out.printf("\nindex 9 value %d", intArr[9]);
 
         System.out.println("\n3. Удаление элементов массива");
         double[] doubleArr = new double[15];
@@ -39,16 +41,16 @@ public class ArrayTheme {
         System.out.println("The origin array values:");
         printArrInLines(doubleArr, 8);
         double middleCellValue = doubleArr[doubleArr.length / 2];
-        int countOfZero = 0;
+        int countZero = 0;
         for (int i = 0; i < doubleArr.length; i++) {
             if (doubleArr[i] > middleCellValue) {
                 doubleArr[i] = 0;
-                countOfZero++;
+                countZero++;
             }
         }
         System.out.println("The converted array values:");
         printArrInLines(doubleArr, 8);
-        System.out.println("The amount of zero values " + countOfZero);
+        System.out.println("The amount of zero values " + countZero);
 
         System.out.println("\n4. Вывод элементов массива лесенкой в обратном порядке");
         char[] charArr = new char[26];
@@ -87,11 +89,11 @@ public class ArrayTheme {
         String[] srcStrings = {"    ", "AA", "", "BBB", "CC", "D", "    ", "E", "FF", "G", ""};
         System.out.println("The origin array values");
         printArr(srcStrings);
-        int countOfNonBlank = 0;
+        int countNonBlank = 0;
         for (String s : srcStrings) {
-            if (!s.isBlank()) countOfNonBlank++;
+            if (!s.isBlank()) countNonBlank++;
         }
-        String[] destStrings = new String[countOfNonBlank];
+        String[] destStrings = new String[countNonBlank];
         int startSrcIndex = 0;
         int startDistIndex = 0;
         for (int i = 0; i < srcStrings.length; i++) {
@@ -126,8 +128,8 @@ public class ArrayTheme {
     public static void printArrInLines(double[] doubleArr, int lineSize) {
         int i = 0;
         while (i < doubleArr.length) {
-            int indexOfNewLine = i;
-            for (; i < indexOfNewLine + lineSize && i < doubleArr.length; i++) {
+            int indexNewLine = i;
+            for (; i < indexNewLine + lineSize && i < doubleArr.length; i++) {
                 System.out.printf("%.3f ", doubleArr[i]);
             }
             System.out.println();
@@ -137,8 +139,8 @@ public class ArrayTheme {
     public static void printArrInLines(int[] intArr, int lineSize) {
         int i = 0;
         while (i < intArr.length) {
-            int indexOfNewLine = i;
-            for (; i < indexOfNewLine + lineSize && i < intArr.length; i++) {
+            int indexNewLine = i;
+            for (; i < indexNewLine + lineSize && i < intArr.length; i++) {
                 System.out.printf("%d ", intArr[i]);
             }
             System.out.println();
