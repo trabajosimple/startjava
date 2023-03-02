@@ -1,4 +1,5 @@
 package com.startjava.lesson_2_3_4.calculator;
+
 import java.util.Scanner;
 
 public class CalculatorTest {
@@ -16,15 +17,19 @@ public class CalculatorTest {
                 System.out.println(e.fillInStackTrace() + " Enter a correct math expression.");
                 continue;
             }
-            if ((result - (long) result) > SIGNIFICANT_FRACTION) {
-                System.out.printf("Result: %.3f\n", result);
-            } else {
-                System.out.printf("Result: %d\n", (long) result);
-            }
+            printResult(result);
             do {
                 System.out.print("Do you want to continue? [yes/no]: ");
                 response = console.nextLine();
             } while (!response.equals("yes") && !response.equals("no"));
         } while (response.equals("yes"));
+    }
+
+    private static void printResult(double result){
+        if (result % 1 > SIGNIFICANT_FRACTION) {
+            System.out.printf("Result: %.3f\n", result);
+        } else {
+            System.out.printf("Result: %d\n", (long) result);
+        }
     }
 }

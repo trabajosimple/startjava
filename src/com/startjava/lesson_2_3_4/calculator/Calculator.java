@@ -6,7 +6,7 @@ public class Calculator {
         if (arguments.length != 3) throw new IllegalArgumentException("Incorrect math expression");
         double a = Integer.parseInt(arguments[0]);
         double b = Integer.parseInt(arguments[2]);
-        if( a <= 0 || b <= 0) throw new IllegalArgumentException("Numbers must be positive");
+        if (a <= 0 || b <= 0) throw new IllegalArgumentException("Numbers must be positive");
         return switch (arguments[1]) {
             case "+" -> a + b;
             case "-" -> a - b;
