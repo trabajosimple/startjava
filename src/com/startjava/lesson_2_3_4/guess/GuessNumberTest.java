@@ -12,10 +12,8 @@ public class GuessNumberTest {
         String response;
         do {
             game.play(console);
-            do {
-                System.out.print("Do you want to continue? [yes/no]: ");
-                response = console.nextLine();
-            } while (!response.equals("yes") && !response.equals("no"));
+            System.out.print("Do you want to continue? [yes/no]: ");
+            response = console.nextLine();
         } while (response.equals("yes"));
     }
 
