@@ -92,10 +92,11 @@ public class GuessNumber {
     private void showNumbers() {
         int[] numbers = Arrays.copyOf(players[0].getNumbers(),
                 Player.MAX_ATTEMPTS * players.length);
-        int index = players[0].getIndex();
+        int index = players[0].getAttempts();
         for (int i = 1; i < players.length; i++) {
-            System.arraycopy(players[i].getNumbers(), 0, numbers, index, players[i].getIndex() + 1);
-            index += players[i].getIndex();
+            System.arraycopy(players[i].getNumbers(), 0, numbers, index,
+                    players[i].getAttempts());
+            index += players[i].getAttempts();
         }
         Arrays.sort(numbers);
         for (int i = numbers.length - 1; i >= numbers.length - index; i--) {

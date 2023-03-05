@@ -9,12 +9,12 @@ public class GuessNumberTest {
         Player player2 = createPlayer(console, "second");
         Player player3 = createPlayer(console, "third");
         GuessNumber game = new GuessNumber(player1, player2, player3);
-        String response;
+        String response = "yes";
         do {
-            game.play(console);
+            if (response.equals("yes")) game.play(console);
             System.out.print("Do you want to continue? [yes/no]: ");
             response = console.nextLine();
-        } while (response.equals("yes"));
+        } while (!response.equals("no"));
     }
 
     private static Player createPlayer(Scanner console, String position) {

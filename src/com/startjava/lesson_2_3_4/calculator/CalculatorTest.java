@@ -6,24 +6,22 @@ public class CalculatorTest {
 
     public static void main(String[] args) {
         Scanner console = new Scanner(System.in);
-        String response = "no";
+        String response = "yes";
         do {
-            System.out.print("\nEnter a math expression: ");
-            double result;
-            try {
-                result = Calculator.calculate(console.nextLine());
-            } catch (IllegalArgumentException | ArithmeticException e) {
-                System.out.println(e.fillInStackTrace() + " Enter a correct math expression.");
-                continue;
+            if (response.equals("yes")) {
+                System.out.print("\nEnter a math expression: ");
+                double result;
+                try {
+                    result = Calculator.calculate(console.nextLine());
+                } catch (IllegalArgumentException | ArithmeticException e) {
+                    System.out.println(e.fillInStackTrace() + " Enter a correct math expression.");
+                    continue;
+                }
+                printResult(result);
             }
-            printResult(result);
             System.out.print("Do you want to continue? [yes/no]: ");
             response = console.nextLine();
-            if (response != "yes" || response != "no") {
-                System.out.print("Do you want to continue? [yes/no]: ");
-                response = console.nextLine();
-            }
-        } while (response.equals("yes"));
+        } while (!response.equals("no"));
     }
 
     private static void printResult(double result) {
