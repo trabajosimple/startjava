@@ -9,21 +9,18 @@ public class GuessNumber {
     private Player[] players;
 
     public GuessNumber(Player... players) {
-        if (players.length < 2) {
-            throw new IllegalArgumentException("Incorrect numbers of players");
-        }
         this.players = players;
     }
 
     public void play(Scanner console) {
         clearPlayerNumbers();
-        choosePlayOrder();
-        chooseGuessedNumber();
+        castLots();
+        generateGuessedNumber();
         System.out.printf("Every player has %d attempts\n", Player.MAX_ATTEMPTS);
         boolean isGuessed = false;
         int roundNumber = 1;
         do {
-            isGuessed = holdRound(console, roundNumber);
+            isGuessed = makeMove(console, roundNumber);
             roundNumber++;
         } while (!isGuessed && roundNumber <= Player.MAX_ATTEMPTS);
         if (isGuessed) {
@@ -33,7 +30,12 @@ public class GuessNumber {
         }
     }
 
-    public void choosePlayOrder() {
+    private void clearPlayerNumbers() {
+        for (Player player : players) {
+            player.clear();
+        }
+    }
+    public void castLots() {
         Random rand = new Random();
         for (int i = players.length - 1; i >= 0; i--) {
             int j = i == 0 ? 0 : rand.nextInt(i);
@@ -43,18 +45,12 @@ public class GuessNumber {
         }
     }
 
-    private void clearPlayerNumbers() {
-        for (Player player : players) {
-            player.clearNumbers();
-        }
-    }
-
-    private void chooseGuessedNumber() {
+    private void generateGuessedNumber() {
         Random rand = new Random();
         guessedNumber = rand.nextInt(100) + 1;
     }
 
-    private boolean holdRound(Scanner console, int roundNumber) {
+    private boolean makeMove(Scanner console, int roundNumber) {
         for (Player player : players) {
             System.out.printf("it's the %s's turn to guess the number: ", player.getName());
             enterNumber(player, console);
@@ -64,16 +60,14 @@ public class GuessNumber {
     }
 
     private void enterNumber(Player player, Scanner console) {
-        boolean isCorrect = false;
         do {
             try {
-                player.setNumber(Integer.parseInt(console.nextLine()));
-                isCorrect = true;
+                player.addNumber(Integer.parseInt(console.nextLine()));
+                break;
             } catch (IllegalArgumentException e) {
                 System.out.print("Invalid number, enter once more: ");
-                isCorrect = false;
             }
-        } while (!isCorrect);
+        } while (true);
     }
 
     private boolean isGuessed(Player player, int roundNumber) {
@@ -90,18 +84,14 @@ public class GuessNumber {
     }
 
     private void showNumbers() {
-        int[] numbers = Arrays.copyOf(players[0].getNumbers(),
-                Player.MAX_ATTEMPTS * players.length);
-        int index = players[0].getAttempts();
-        for (int i = 1; i < players.length; i++) {
-            System.arraycopy(players[i].getNumbers(), 0, numbers, index,
-                    players[i].getAttempts());
-            index += players[i].getAttempts();
-        }
-        Arrays.sort(numbers);
-        for (int i = numbers.length - 1; i >= numbers.length - index; i--) {
-            System.out.printf("%2d ", numbers[i]);
-            if (i == numbers.length - (index / 2)) System.out.println();
+        int amount = 0;
+        for (Player player : players) amount += player.getAttempts();
+        int index = 0;
+        for (Player player : players) {
+            for (int number : player.getNumbers()) {
+                System.out.printf("%2d ", number);
+                if (index++ == (amount -1) / 2) System.out.println();
+            }
         }
         System.out.println();
     }

@@ -23,7 +23,6 @@ public class CalculatorTest {
             response = console.nextLine();
         } while (!response.equals("no"));
     }
-
     private static void printResult(double result) {
         System.out.printf("Result: " + (result % 1 != 0 ? "%.3f\n" : "%.0f\n"), result);
     }
