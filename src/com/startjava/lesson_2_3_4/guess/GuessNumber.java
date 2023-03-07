@@ -90,7 +90,7 @@ public class GuessNumber {
         for (Player player : players) {
             for (int number : player.getNumbers()) {
                 System.out.printf("%2d ", number);
-                if (index++ == (amount -1) / 2) System.out.println();
+                if (index++ == (amount - 1) / 2) System.out.println();
             }
         }
         System.out.println();
