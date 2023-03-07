@@ -9,6 +9,8 @@ CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
 GRANT ALL ON DATABASE osboxes TO postgres;
 
+\c osboxes;
+
 DROP TABLE IF EXISTS public.jaegers;
 
 CREATE TABLE IF NOT EXISTS public.jaegers
@@ -27,6 +29,6 @@ CREATE TABLE IF NOT EXISTS public.jaegers
 
 ALTER TABLE IF EXISTS public.jaegers OWNER to postgres;
 
-\ir init_db.sql
+\ir init_db.sql;
 
-\ir queries.sql
+\ir queries.sql;
