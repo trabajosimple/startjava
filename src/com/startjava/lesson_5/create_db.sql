@@ -13,8 +13,7 @@ GRANT ALL ON DATABASE osboxes TO postgres;
 
 DROP TABLE IF EXISTS public.jaegers;
 
-CREATE TABLE IF NOT EXISTS public.jaegers
-(
+CREATE TABLE IF NOT EXISTS public.jaegers(
     id uuid NOT NULL DEFAULT uuid_generate_v4(),
     "modelName" character varying NOT NULL,
     mark character varying,
